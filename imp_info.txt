@@ -1,0 +1,5 @@
+
+
+https://github.com/codeforatlanta/apd-crime-data - Link to get crime data (csv present)
+
+https://github.com/davidsawyer/traffic-student - Link to get traffic data (to be scraped from google traffic information using 'scrape.js')
