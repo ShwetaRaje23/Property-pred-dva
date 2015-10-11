@@ -9,7 +9,7 @@ All the sources of data that we currently found. Includes:
 #Setting up a server (Django)
 - Clone/ Pull the project in your local directory
 - Run - pip install django in your command line
-- Once Django is installed on your machine, navigate to till the directory that has manage.py
+- Once Django is installed on your machine, navigate to the directory that has manage.py
 - Run - python manage.py runserver
 - You should see the basic html file in your localhost. 
 
