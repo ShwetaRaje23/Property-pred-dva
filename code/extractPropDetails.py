@@ -59,30 +59,7 @@ d = {'zpid':zpid,
      'images':{'count':imgCt,
                'image':{'url':}}}
 '''
-'''
-tree = ET.fromstring(document)
-file_handle = open("../data/UpdatedPropertyDetails.xml","wb")
-xml = "UpdatedPropertyDetails:updatedPropertyDetails"
-print document
 
-print type(document)
-#xml = document.strip()
-value = ET.fromstring(document).find('response/editedFacts/bedrooms')
-if len(value):
-    print 'Found value:', value.text
-
-tree = ET.parse(url)
-node = tree.find('request')
-
-node.writexml(file_handle)
-file_handle.write(xml)
-xml.writexml(file_handle)
-root = tree.getroot()
-print node
-
-tree.write(file_handle)
-file_handle.close()
-''' 
 
 
  
