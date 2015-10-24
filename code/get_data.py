@@ -17,9 +17,13 @@ def getData(idList, API_key,d):
         getZestimate(API_key, zpid,d)
         chartData(API_key, zpid, d)
     path = '../data/DeepSearchResults.xml'
-    zpid, year = get_ids.getYear(path)
-    for i in range(len(zpid)):
-        d[zpid[i]]['yearBuilt'] = year[i]
+   # zpid, year = get_ids.getYear(path)
+    d = get_ids.getYear(path, d)
+  #  print "Zpid size", len(zpid)
+  #  print "Year size", len(year)
+  #  for i in range(len(zpid)):
+  #      if zpid[i] in d:
+  #          d[zpid[i]]['yearBuilt'] = year[i]
     return d
     
 

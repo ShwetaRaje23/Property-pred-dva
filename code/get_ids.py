@@ -16,11 +16,16 @@ def getIds(path):
     #print len(final_list)  #length of ids after removing
     return final_list
     
-def getYear(path):
+def getYear(path, d):
     fp = open(path,"r")
     element = ET.parse(fp)
-    zpid = element.findall('result/zpid') 
-    year = element.findall('result/yearBuilt')
+    for e in element.iter(tag="result"):
+        zpid = element.find('zpid')
+        year = element.find('yearBuilt')
+        if year:
+            d[zpid]["yearBuilt"] = year
+
+    '''
     ids = []
     years = []
     for i in zpid:
@@ -30,5 +35,6 @@ def getYear(path):
     
     final_list_ids = list(set(ids)) #final list containing the de-duplicated list of int ids
     final_list_years = list(set(years))
-    return final_list_ids, final_list_years
+    '''
+    return d
     
