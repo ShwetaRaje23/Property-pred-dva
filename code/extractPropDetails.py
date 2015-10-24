@@ -6,6 +6,8 @@ Created on Sun Oct 11 15:12:54 2015
 @author: Laura
 """
 
+# Laura
+
 #from pyzillow.pyzillow import ZillowWrapper
 import xml.etree.ElementTree as ET
 import urllib2
@@ -43,8 +45,8 @@ heating = tree.find('response/editedFacts/heatingSystem').text
 cooling = tree.find('response/editedFacts/coolingSystem').text
 app = tree.find('response/editedFacts/appliances').text
 
-homeDesc = 
-'''
+homeDesc = tree.find('response/homeDescription').text
+
 d = {'zpid':zpid, 
      'pageViewCount':{'currentMonth':curMth, 
                       'total':tot}, 
@@ -58,8 +60,12 @@ d = {'zpid':zpid,
               'photoGallery':pG,
               'homeInfo':hI},
      'images':{'count':imgCt,
-               'image':{'url':}}}
-'''
+               'image':{'url':imgUrl}},
+     'editedFacts':{'useCode':uC,
+                    'bedrooms':bedrooms,
+                    'bathrooms':bath,
+                    ''}}
+
 
 
 
