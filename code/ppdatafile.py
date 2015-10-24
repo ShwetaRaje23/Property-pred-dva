@@ -3,7 +3,7 @@
 """
 Created on Sun Oct 11 15:12:54 2015
 
-@author: Laura
+@author: Minal
 """
 
 #from pyzillow.pyzillow import ZillowWrapper
