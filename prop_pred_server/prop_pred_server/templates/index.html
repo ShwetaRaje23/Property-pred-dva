@@ -1,14 +1,173 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-	<title>
+	<head>
+
+		<meta charset="utf-8">
+		<title>VM - VideoMap : Using Ziggeo and Google Maps API to Create a video trail</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta name="author" content="@toddmotto">
+		<link href="/static/css/main.css" rel="stylesheet">
+		<link href="/static/css/demo.css" rel="stylesheet">
+		<!-- database -->
+		<!-- hello -->
+		 <!-- // <script src="./videomap/rsvp.js"></script> -->
+		 <script src="http://rsvpjs-builds.s3.amazonaws.com/rsvp-latest.min.js"></script>
+		 <!-- // <script src="https://cdn.jsdelivr.net/rsvp/3.0.6/rsvp.amd.min.js"></script> -->
+		  <!-- Firebase -->
+		  <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
+		  <!-- GeoFire -->
+		  <script src="https://cdn.firebase.com/libs/geofire/2.0.0/geofire.min.js"></script>
+		<!-- data for ziggeo -->
+		<link rel="stylesheet" href="//assets.ziggeo.com/css/ziggeo-betajs-player.min.css" />
+		<script src="//assets.ziggeo.com/js/ziggeo-jquery-json2-betajs-player.min.js"></script>
+		<script>ZiggeoApi.token = "5a43b6ee0a96449c649af6a8030b0c9d";</script>
+
+	</head>
+	<body>
+
+	<!--  Add a logo and a title -->
+		<div class="header">
+			<div class="logo">
+				<img src="https://www.valveman.com/wp-content/uploads/2012/09/VM-logo-only.gif" width="60px" height="60px" alt="Logo" class="logo-img">
+			</div>
+			<ul class="nav">
+				<li class="nav-link">
+					<!-- <a href="http://toddmotto.com/using-html5-geolocation-to-show-current-location-with-google-maps-api">Go to tutorial</a> -->
+				</li>
+			</ul>
+		</div>
+		
+		<div id="google_canvas"></div>
+	
+		<script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+	
+	    <script>
+	    var position, lat= 0, longi=0;
+
+	    (function() {
+	    
+	    	if(!!navigator.geolocation) {
+	    	
+	    		var map;
+	    		var key=0;
+	    	
+		    	var mapOptions = {
+		    		zoom: 15,
+		    		mapTypeId: google.maps.MapTypeId.ROADMAP
+		    	};
+		    	
+		    	map = new google.maps.Map(document.getElementById('google_canvas'), mapOptions);
+	    	
+	    		navigator.geolocation.getCurrentPosition(function(position) {
+	    		
+		    		var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+		    		lat = position.coords.latitude;
+		    		longi = position.coords.longitude;
+		    		
+		    		var infowindow = new google.maps.InfoWindow({
+		    			map: map,
+		    			position: geolocate,
+		    			content:
+		    				'<h1>Record a video at this location !</h1>' +
+		    				'<h2>Latitude: ' + position.coords.latitude + '</h2>' +
+		    				'<h2>Longitude: ' + position.coords.longitude + '</h2>'+ 
+		    				'<ziggeo ziggeo-width=320 ziggeo-height=240></ziggeo>' +
+		    				'<iframe src="https://www.google.com/maps/d/u/0/embed?mid=zyEQga4ukwR4.kL8rDqwLtHjM" width="640" height="480"></iframe>'
+
+
+
+		    				
+
+		    				//  ziggeo-video=""+token+"" -- use this from the daatabase
+		    		});
+		    		
+		    		map.setCenter(geolocate);
+		    		
+	    		});
+
+				google.maps.event.addListener(map, 'click', function(event) {
+			   var loc = placeMarker(event.latLng);
+				var infowindow = new google.maps.InfoWindow({
+		    			map: map,
+		    			position: loc,
+		    			content:
+		    				'<h1>Record a video at this location !</h1>' +
+		    				'<h2>Latitude: ' + position.coords.latitude + '</h2>' +
+		    				'<h2>Longitude: ' + position.coords.longitude + '</h2>'+ 
+		    				'<ziggeo ziggeo-width=320 ziggeo-height=240></ziggeo>' +
+		    				'<iframe src="https://www.google.com/maps/d/u/0/embed?mid=zyEQga4ukwR4.kL8rDqwLtHjM" width="640" height="480"></iframe>'
+
+
+			});
+			});
+
+			function placeMarker(location) {
+			    var marker = new google.maps.Marker({
+			        position: location, 
+			        map: map
+			    });
+			}
+
+	    		
+	    	} else {
+	    		document.getElementById('google_canvas').innerHTML = 'No Geolocation Support.';
+	    	}
+	    	
+	    })();
+
+	    var token;
+	    var myFirebaseRef = new Firebase("https://torrid-torch-9815.firebaseio.com/");
+		var geoFire = new GeoFire(myFirebaseRef);
+		ZiggeoApi.Events.on("submitted", function (data) {
+			// Triggered when a video has been recorded 
+		window.alert("Recorded Video")
+		 token = data.video.token;
+
+
+		console.log(token);
+		console.log(lat);
+		console.log(longi);
+
+
+				
+				
+
+				geoFire.set(token, [lat ,longi]).then(function() {
+				  console.log("Provided key has been added to GeoFire");
+				}, function(error) {
+				  console.log("Error: " + error);
+				});
+
+var geoQuery = geoFire.query({
+				  center: [lat, longi ],
+				  radius: 1.609 //kilometers
+				});
+
+				geoQuery.on("key_entered", function(key, location, distance) {
+  console.log("Bicycle shop " + key + " found at " + location + " (" + distance + " km away)");
+
+
+});
+
+
+
+
+});
+				
+
+		
+	
+ 		</script>
+	
+		<!-- Demo Analytics -->
+		<script>
+			var _gaq=[['_setAccount','UA-20440416-10'],['_trackPageview']];
+			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+			g.src='//www.google-analytics.com/ga.js';
+			s.parentNode.insertBefore(g,s)})(document,'script');
+		</script>
 		
 		
-	</title>
-</head>
-<body>
 
-<p> 	Hi this is the basic property predictor file that is present </p>
-
-</body>
+	</body>
 </html>
