@@ -3,3 +3,5 @@
 https://github.com/codeforatlanta/apd-crime-data - Link to get crime data (csv present)
 
 https://github.com/davidsawyer/traffic-student - Link to get traffic data (to be scraped from google traffic information using 'scrape.js')
+
+https://github.com/codeforatlanta/asset-map/tree/master/data - (All data that we need for ATL small things like bike racks, metro station, historical monuments etc)
