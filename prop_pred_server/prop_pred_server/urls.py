@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     # url(r'^$', 'prop_pred_server.views.login')
     url(r'^$', 'prop_pred_server.views.login'),
-    url(r'^show/$', 'prop_pred_server.views.index', name='index')
+    url(r'^index/$', 'prop_pred_server.views.index', name='index'),
+    url(r'^map/$', 'prop_pred_server.views.maps', name='map')
 ]
