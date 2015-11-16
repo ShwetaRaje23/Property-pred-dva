@@ -1,0 +1,5 @@
+For starting the app, navigate to directory mypp
+Run - python manage.py runserver
+Open http://127.0.0.1:8000/startpp/ in browser
+Set the sliders and hit submit
+You should be able to see the range you set for each of the values in the form of dictionary
