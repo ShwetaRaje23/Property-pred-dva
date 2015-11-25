@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="bubble.css">
+    <script type="text/javascript" src="d3/d3.js" charset="utf-8"></script>
+    
+    <title>Bubble Menu </title>
+</head>
+
+<body>
+    <h1>Property Selector</h1>
+    <h2>Bubble Chart</h2>
+    <section id="chart"></section>
+    <!-- bubble(json_results) -->
+    <script type="text/javascript" src="results.json">
+    <script type="text/javascript" src="bubble.js">
+        var data = jQuery.parseJSON('{{ json_results }}')
+        console.log(data)
+        <!-- var results = {{ json_results }} -->
+
+    </script>
+</body>
+   
+</html>

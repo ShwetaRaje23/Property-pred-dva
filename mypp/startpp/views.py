@@ -57,4 +57,11 @@ def getdata_view(request):
 
     results = Property.objects.filter(editedfacts_finishedsqft__gt=int(my_dict['Size of house Value']),yearbuilt__lt=2015-int(my_dict['Age of the house Value']))
 
-    return HttpResponse(serializers.serialize("json", results), content_type='application/json')
+    #return HttpResponse(serializers.serialize("json", results), content_type='application/json')
+    #return render_to_response('Bubble.html', Context({'results_json':results}   ))
+    #return render_to_response('Bubble.html', serializers.serialize("json", results), content_type='application/json')
+    results_change = serializers.serialize("json",results)
+    #return render(request, "Bubble.html", {'json_results':results_change})
+    #return render_to_response('Bubble.html',{'json_results':results_change})
+    with open('results.json','w') as fp:
+        json.dump(results_change, fp)
