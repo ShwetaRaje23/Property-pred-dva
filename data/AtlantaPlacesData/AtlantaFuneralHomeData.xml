@@ -1,7 +1,7 @@
 <PlaceSearchResponse>
 <status>OK</status>
 <result>
-<name>Davis-Struempf Funeral Home & Crematory</name>
+<name>Davis-Struempf Funeral Home &amp; Crematory</name>
 <vicinity>1975 East-West Connector, Austell</vicinity>
 <type>funeral_home</type>
 <type>point_of_interest</type>
@@ -109,7 +109,7 @@ CmRdAAAASeK-hBdXDWXKz8QfCtlEQZNtf0aQ9Khn1A1edLan9xTq6Ae_FbtZtzi8UfBkftiI4Ne5Tbc4
 <scope>GOOGLE</scope>
 </result>
 <result>
-<name>Wages & Sons Funeral Homes and Crematories</name>
+<name>Wages &amp; Sons Funeral Homes and Crematories</name>
 <vicinity>1031 Lawrenceville Highway, Lawrenceville</vicinity>
 <type>funeral_home</type>
 <type>point_of_interest</type>
@@ -360,7 +360,7 @@ CnRlAAAAxdrE4dWalso_hw-6odqD9LX9Fw4fXdRpc-onVgqefGwQrP1LrwvSXTrpyeG3E7N37d5KYXpb
 </result>
 <result>
 <name>
-Mayes Ward-Dobbins Funeral Home & Crematory - Historic Marietta Chapel
+Mayes Ward-Dobbins Funeral Home &amp; Crematory - Historic Marietta Chapel
 </name>
 <vicinity>180 Church Street, Marietta</vicinity>
 <type>funeral_home</type>
@@ -396,7 +396,7 @@ CmRdAAAAKCeXNrvcuzmP0sLzRNSwu3Dfewq8bpL3zSQ3LqP89Rt2A52km1U8Tr91f3iNLGLQaIgKKFOj
 <scope>GOOGLE</scope>
 </result>
 <result>
-<name>West Cobb Funeral Home & Crematory Inc</name>
+<name>West Cobb Funeral Home &amp; Crematory Inc</name>
 <vicinity>2480 Macland Road, Marietta</vicinity>
 <type>funeral_home</type>
 <type>point_of_interest</type>

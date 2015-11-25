@@ -1,7 +1,7 @@
 <PlaceSearchResponse>
 <status>OK</status>
 <result>
-<name>Papouli's Mediterranean Cafe & Market</name>
+<name>Papouli's Mediterranean Cafe &amp; Market</name>
 <vicinity>3070 Windward Plaza, Alpharetta</vicinity>
 <type>restaurant</type>
 <type>convenience_store</type>

@@ -1,7 +1,7 @@
 <PlaceSearchResponse>
 <status>OK</status>
 <result>
-<name>Holiday Harbor Marina & Resort</name>
+<name>Holiday Harbor Marina &amp; Resort</name>
 <vicinity>5989 Groovers Landing Road Southeast, Acworth</vicinity>
 <type>store</type>
 <type>real_estate_agency</type>
@@ -43,7 +43,7 @@ CmRdAAAAzs3oSuESRDjTCQibAxi5WJ0kfNtq28qGqb76qQLLWGsrvguzQW3tzcJNYnbfscaoIWlzKDxe
 <scope>GOOGLE</scope>
 </result>
 <result>
-<name>Twin Lakes Park & RV</name>
+<name>Twin Lakes Park &amp; RV</name>
 <vicinity>3300 Shore Drive, Cumming</vicinity>
 <type>campground</type>
 <type>park</type>
