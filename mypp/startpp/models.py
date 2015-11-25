@@ -15,7 +15,7 @@ class ZipCityState(models.Model):
 class Property(models.Model):
     #...
     def __str__(self):
-        return self.homdescription
+        return self.homedescription
     zip_city_state = models.ForeignKey(ZipCityState)
     zpid = models.CharField(max_length=10)
     pageviewcount_currentmonth = models.BigIntegerField(default=0)

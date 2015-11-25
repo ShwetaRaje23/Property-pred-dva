@@ -22,5 +22,4 @@ urlpatterns = [
     #url(r'^hello/', hello_view),
     #url(r'^action/', action_controller),
     url(r'^startpp/', include('startpp.urls'))
-
 ]
