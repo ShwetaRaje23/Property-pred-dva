@@ -1,0 +1,75 @@
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Roboto Light", "Segoe UI Web Light", "Segoe UI Light", "Segoe UI Web Regular", "Segoe UI", Helvetica, Arial, sans-serif; 
+  margin: 1em;
+  background: #293950;
+  color: #ecf0f0;
+}
+section {
+  margin: 0 auto;
+}
+a {
+  color: gold;
+}
+
+circle:hover {
+	fill: orange;
+}
+
+#tooltip {
+	position: absolute;
+	width: 200px;
+	height: auto;
+	padding: 10px;
+	background-color: white;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+	pointer-events: none;
+}
+
+#tooltip.hidden {
+	display: none;
+}
+
+#tooltip p {
+	margin: 0;
+	font-family: sans-serif;
+	font-size: 16px;
+	line-height: 20px;
+}
+
+
+
+.highlight
+{
+	stroke: 'black';
+	stroke-width: '5';
+}
+
+/* Price */
+.price
+ {
+ 	fill: #DF4949; background: #DF4949;
+ }
+
+/* Area */
+.area 
+{
+	fill: #E27A3F; background: #E27A3F;
+}
+
+/* Number of bedrooms */
+.beds 
+{ 
+	fill: #EFC94C; background: #EFC94C;
+}
+
+/* Safety */
+.safety 
+{ 
+	fill: #9B59B6; background:  #9B59B6;
+}
+
