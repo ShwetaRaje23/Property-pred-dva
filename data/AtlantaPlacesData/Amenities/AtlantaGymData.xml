@@ -1,42 +1,42 @@
 <PlaceSearchResponse>
-<status>OK</status>
-<result>
-<name>Georgia Tech Campus Recreation Center</name>
-<vicinity>750 Ferst Drive, Atlanta</vicinity>
-<type>gym</type>
-<type>health</type>
-<type>point_of_interest</type>
-<type>establishment</type>
-<geometry>
-<location>
-<lat>33.7756300</lat>
-<lng>-84.4039480</lng>
-</location>
-</geometry>
-<rating>4.6</rating>
-<icon>
-https://maps.gstatic.com/mapfiles/place_api/icons/fitness-71.png
-</icon>
-<reference>
-CoQBeQAAANPzvFUM0joACYjvXtq3-A_Ryirx7Z6nzbfhqsCU7Ksz8jeCzA8mJ_ZjWP2p0moaTqUkQqUYH96FFhI90mjQy8g7t7GgGXwIYnjICAKxcrpUII6etPG11AiaKk2eSJKxxnh1GrEAUvdvct2S5Aeb_tsqhh9SIZbEfuIJNooHIq3pEhDCzUSq-NG_w2nm-msDC2oGGhRliE8B8Dsppainh8OJD_Ezcw3Rcg
-</reference>
-<id>636fba639214e9a873f3e010e2e51dae81a83bea</id>
-<opening_hours>
-<open_now>true</open_now>
-</opening_hours>
-<photo>
-<photo_reference>
-CmRdAAAAxMAbQxLSft216TRDbF2fBkxTvN2PPJVkXetwkmQhtzxVYn-aqyVWWDmmQMGN10ijvWkCjpVjviyXnaLmMyYNRByBUFXjOh9rNqCxXJ4LhuwhIG2OoZR5ECRx4ugq3_KZEhBZhqubUCOEn5eaA3hmKbobGhT-FhvIBOMJEJitRYqHazKiN_IgGQ
-</photo_reference>
-<width>1422</width>
-<height>951</height>
-<html_attribution>
-<a href="https://maps.google.com/maps/contrib/101120914089424608978">Campus Recreation Center at Georgia Tech</a>
-</html_attribution>
-</photo>
-<place_id>ChIJ47Mo6GIE9YgRkp7xFxkngOY</place_id>
-<scope>GOOGLE</scope>
-</result>
+    <status>OK</status>
+    <result>
+        <name>Georgia Tech Campus Recreation Center</name>
+        <vicinity>750 Ferst Drive, Atlanta</vicinity>
+        <type>gym</type>
+        <type>health</type>
+        <type>point_of_interest</type>
+        <type>establishment</type>
+        <geometry>
+        <location>
+            <lat>33.7756300</lat>
+            <lng>-84.4039480</lng>
+        </location>
+        </geometry>
+        <rating>4.6</rating>
+        <icon>
+            https://maps.gstatic.com/mapfiles/place_api/icons/fitness-71.png
+        </icon>
+        <reference>
+            CoQBeQAAANPzvFUM0joACYjvXtq3-A_Ryirx7Z6nzbfhqsCU7Ksz8jeCzA8mJ_ZjWP2p0moaTqUkQqUYH96FFhI90mjQy8g7t7GgGXwIYnjICAKxcrpUII6etPG11AiaKk2eSJKxxnh1GrEAUvdvct2S5Aeb_tsqhh9SIZbEfuIJNooHIq3pEhDCzUSq-NG_w2nm-msDC2oGGhRliE8B8Dsppainh8OJD_Ezcw3Rcg
+        </reference>
+        <id>636fba639214e9a873f3e010e2e51dae81a83bea</id>
+        <opening_hours>
+            <open_now>true</open_now>
+        </opening_hours>
+        <photo>
+            <photo_reference>
+                CmRdAAAAxMAbQxLSft216TRDbF2fBkxTvN2PPJVkXetwkmQhtzxVYn-aqyVWWDmmQMGN10ijvWkCjpVjviyXnaLmMyYNRByBUFXjOh9rNqCxXJ4LhuwhIG2OoZR5ECRx4ugq3_KZEhBZhqubUCOEn5eaA3hmKbobGhT-FhvIBOMJEJitRYqHazKiN_IgGQ
+            </photo_reference>
+            <width>1422</width>
+            <height>951</height>
+            <html_attribution>
+                <a href="https://maps.google.com/maps/contrib/101120914089424608978">Campus Recreation Center at Georgia Tech</a>
+            </html_attribution>
+        </photo>
+        <place_id>ChIJ47Mo6GIE9YgRkp7xFxkngOY</place_id>
+        <scope>GOOGLE</scope>  
+    </result>
 <result>
 <name>Fairfield Inn &amp; Suites Atlanta Buckhead</name>
 <vicinity>3092 Piedmont Road Northeast, Atlanta</vicinity>
