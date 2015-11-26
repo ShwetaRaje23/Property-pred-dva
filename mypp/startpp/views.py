@@ -4,9 +4,8 @@ from django.template.context import Context
 from django.http import HttpResponse
 from django.db import models
 from startpp.models import Property
-import json
-from django.core import serializers
-
+import simplejson
+from django.core.serializers.json import DjangoJSONEncoder
 
 # Create your views here.
 
@@ -55,13 +54,20 @@ def getdata_view(request):
 
     results = {}
 
-    results = Property.objects.filter(editedfacts_finishedsqft__gt=int(my_dict['Size of house Value']),yearbuilt__lt=2015-int(my_dict['Age of the house Value']))
+    results = Property.objects.filter(editedfacts_finishedsqft__gt=int(my_dict['Size of house Value']),yearbuilt__lt=2015-int(my_dict['Age of the house Value'])).values()
 
+    final_output = {}
+    for result in results:
+        final_output[result['zpid']] = result
+    response = {'meta':{'status':'success'}, 'data':final_output}
+    print response
     #return HttpResponse(serializers.serialize("json", results), content_type='application/json')
     #return render_to_response('Bubble.html', Context({'results_json':results}   ))
     #return render_to_response('Bubble.html', serializers.serialize("json", results), content_type='application/json')
-    results_change = serializers.serialize("json",results)
+    #results_change = serializers.serialize("json",results)
     #return render(request, "Bubble.html", {'json_results':results_change})
     #return render_to_response('Bubble.html',{'json_results':results_change})
-    with open('results.json','w') as fp:
-        json.dump(results_change, fp)
+    # with open('results.json','w') as fp:
+    #     json.dump(results_change, fp)
+    response = simplejson.dumps(response)
+    return render_to_response('Bubble.html', Context({'results_json': response}))

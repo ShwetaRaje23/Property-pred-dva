@@ -1,43 +1,43 @@
 <PlaceSearchResponse>
-<status>OK</status>
-<result>
-<name>Ashworth College</name>
-<vicinity>6625 The Corners Pkwy, Norcross</vicinity>
-<type>accounting</type>
-<type>finance</type>
-<type>university</type>
-<type>school</type>
-<type>point_of_interest</type>
-<type>establishment</type>
-<geometry>
-<location>
-<lat>33.9598180</lat>
-<lng>-84.2373030</lng>
-</location>
-</geometry>
-<rating>3.6</rating>
-<icon>
-https://maps.gstatic.com/mapfiles/place_api/icons/university-71.png
-</icon>
-<reference>
-CnRkAAAAugBftDT7EJS96JQU479fNNZ93EU-fVE0fimVuIpRDmUfRkYlz0UFPgTwLRIY5t2uzzR26R_31u_dz4R84DBmAzYkd-YUV1MfgRb-OZ9gEc3YZHtI_YeuuUSLgKpS0WBHwFDCqPSChSmvwLarDATIWBIQivhdRyBfb7MbS5EqAZS8AhoUUCIVGRnD2xBZly5qjhNnGI7_ciM
-</reference>
-<id>75a7bb860cf224bb3832d49c5e9f6ec64981d36b</id>
-<photo>
-<photo_reference>
-CmRdAAAA3x02MHXTFu2tNTbn1OFQ61SVHVqxxrCduHPBdwf3TREbXWm1pFq6nqnOpiWD2fZHOrxIaLqLuPN2wvRvcGWKBvGK3JaM_I9ibav6XiWAGVRRs4JXnEXM0mTjzMXxHH1iEhDe-oHimLIwVJa6EH1yt9zNGhQrI7ncFlxetwH5C0UKVGSHa8aYHQ
-</photo_reference>
-<width>2048</width>
-<height>1152</height>
-<html_attribution>
-<a href="https://maps.google.com/maps/contrib/111028063683213122418">Ashworth College</a>
-</html_attribution>
-</photo>
-<place_id>ChIJ1bYLuOGg9YgRWTTMn3Nwwew</place_id>
-<scope>GOOGLE</scope>
-</result>
-<result>
-<name>Harless & Associates</name>
+    <status>OK</status>
+    <result>
+        <name>Ashworth College</name>
+        <vicinity>6625 The Corners Pkwy, Norcross</vicinity>
+        <type>accounting</type>
+        <type>finance</type>
+        <type>university</type>
+        <type>school</type>
+        <type>point_of_interest</type>
+        <type>establishment</type>
+        <geometry>
+            <location>
+                <lat>33.9598180</lat>
+                <lng>-84.2373030</lng>
+            </location>
+        </geometry>
+        <rating>3.6</rating>
+        <icon>
+            https://maps.gstatic.com/mapfiles/place_api/icons/university-71.png
+        </icon>
+        <reference>
+            CnRkAAAAugBftDT7EJS96JQU479fNNZ93EU-fVE0fimVuIpRDmUfRkYlz0UFPgTwLRIY5t2uzzR26R_31u_dz4R84DBmAzYkd-YUV1MfgRb-OZ9gEc3YZHtI_YeuuUSLgKpS0WBHwFDCqPSChSmvwLarDATIWBIQivhdRyBfb7MbS5EqAZS8AhoUUCIVGRnD2xBZly5qjhNnGI7_ciM
+        </reference>
+        <id>75a7bb860cf224bb3832d49c5e9f6ec64981d36b</id>
+        <photo>
+            <photo_reference>
+                CmRdAAAA3x02MHXTFu2tNTbn1OFQ61SVHVqxxrCduHPBdwf3TREbXWm1pFq6nqnOpiWD2fZHOrxIaLqLuPN2wvRvcGWKBvGK3JaM_I9ibav6XiWAGVRRs4JXnEXM0mTjzMXxHH1iEhDe-oHimLIwVJa6EH1yt9zNGhQrI7ncFlxetwH5C0UKVGSHa8aYHQ
+            </photo_reference>
+            <width>2048</width>
+            <height>1152</height>
+            <html_attribution>
+                <a href="https://maps.google.com/maps/contrib/111028063683213122418">Ashworth College</a>
+            </html_attribution>
+        </photo>
+        <place_id>ChIJ1bYLuOGg9YgRWTTMn3Nwwew</place_id>
+        <scope>GOOGLE</scope>
+    </result>
+    <result>
+        <name>Harless &amp; Associates</name>
 <vicinity>3060 Peachtree Road Northwest, Atlanta</vicinity>
 <type>accounting</type>
 <type>finance</type>
@@ -253,7 +253,7 @@ CmRdAAAAKvc7abdljDjl8ij0CWBJ87ZwZ2AjLcFsjeJ5oZiaMHfQb4tSvKSn0SWwRQJcdk7ta2019SCy
 <scope>GOOGLE</scope>
 </result>
 <result>
-<name>Deloitte & Touche LLP</name>
+<name>Deloitte &amp; Touche LLP</name>
 <vicinity>191 Peachtree Street Northeast #2000, Atlanta</vicinity>
 <type>accounting</type>
 <type>finance</type>
@@ -307,7 +307,7 @@ CnRsAAAAAETbCQjoGxeis7iAJnH34OqCMnb7I-w5y_Npgy4Fg9ffQcx3AU2YK7Cg_zPoLG1_ApLe2en9
 <scope>GOOGLE</scope>
 </result>
 <result>
-<name>Smith & Howard</name>
+<name>Smith &amp; Howard</name>
 <vicinity>271 17th Street Northwest #1600, Atlanta</vicinity>
 <type>accounting</type>
 <type>finance</type>
@@ -340,7 +340,7 @@ CmRdAAAA-5ZhRsZW3nVeFbeJsTNNIOP6PSz1EVWNxQT1Ga-e2oOIKw_iQX5qc_SARdJUn8MZx3FErcAF
 <scope>GOOGLE</scope>
 </result>
 <result>
-<name>Alston & Bird LLP</name>
+<name>Alston &amp; Bird LLP</name>
 <vicinity>
 1201 West Peachtree Street Northwest #4200, Atlanta
 </vicinity>
@@ -487,7 +487,7 @@ CmRdAAAAPUyz8YAIHPEgqDRkOtprp-fYFa9C-21Qhk8w5karRa0Cb2UBGDXBA5TNiFILNdJQkbnbsdX-
 <scope>GOOGLE</scope>
 </result>
 <result>
-<name>Ernst & Young</name>
+<name>Ernst &amp; Young</name>
 <vicinity>
 55 Ivan Allen Junior Boulevard Northwest #1000, Atlanta
 </vicinity>
@@ -545,7 +545,7 @@ CmRdAAAAvqXEkAVhPE1gH7Lpz_HMMdC4AN85mAaUBbQKD5HQykV4HgvOLYbuy1pW4-9lj6XwxQn9NOgm
 <scope>GOOGLE</scope>
 </result>
 <result>
-<name>Jeffrey K Kerr & Co LLC</name>
+<name>Jeffrey K Kerr &amp; Co LLC</name>
 <vicinity>241 Wieuca Road Northeast # 130, Atlanta</vicinity>
 <type>accounting</type>
 <type>finance</type>
@@ -568,7 +568,7 @@ CnRqAAAAQDZMuifMCJpACmU0pVL1x6nF4ZIa8MNb-F-yl2jXkRbFdkuuoDmFGd9xXlT8mcKsjPkE2cnj
 <scope>GOOGLE</scope>
 </result>
 <result>
-<name>Peterson Coleman & Marett</name>
+<name>Peterson Coleman &amp; Marett</name>
 <vicinity>4360 Chamblee Dunwoody Road, Atlanta</vicinity>
 <type>accounting</type>
 <type>finance</type>
