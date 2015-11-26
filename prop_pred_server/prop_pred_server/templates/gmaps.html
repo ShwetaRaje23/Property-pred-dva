@@ -41,7 +41,8 @@
 function initialize()
 {
   var mapProp = {
-    center: new google.maps.LatLng(51.508742,-0.120850),
+    // 33.7550° N, 84.3900° W
+    center: new google.maps.LatLng(33.7550, -84.3900),
     zoom:7,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
@@ -80,15 +81,6 @@ $(document).foundation({
 });
 </script>
 </head>
-
-<div class="range-slider" id="slider1" data-slider data-options="start: 1; end: 500; display_selector: #SliderOutput1;"> <span class="range-slider-handle"></span> <span class="range-slider-active-segment"></span> <input type="hidden"></div>
-
-<div class="range-slider" data-slider style="float: right;" right="0">
-  <span class="range-slider-handle" role="slider" tabindex="0"></span>
-  <span class="range-slider-active-segment"></span>
-  <input type="hidden">
-</div>
-
 
 
 

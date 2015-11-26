@@ -13,6 +13,6 @@ def login(request):
 	return HttpResponse(template.render(context))
 
 def maps(request):
-	template = loader.get_template('gmaps.html')
+	template = loader.get_template('maps2.html')
 	context = RequestContext(request, {})
 	return HttpResponse(template.render(context))

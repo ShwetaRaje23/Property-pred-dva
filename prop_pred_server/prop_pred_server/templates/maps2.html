@@ -1,0 +1,300 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+
+  <link rel="stylesheet" href="{% static "css/custom.css"%}" />
+  <link rel="stylesheet" href="{% static "css/foundation.css"%}" />
+  <script src="{% static "js/vendor/modernizr.js"%}"></script>
+  <script src="{% static "js/vendor/jquery.js"%}"></script>
+  <script src="{% static "js/foundation.min.js"%}"></script>
+    
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+        width:50%;
+        margin: 10px;
+        padding: 100; 
+      }
+.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+.pac-container {
+  font-family: Roboto;
+}
+
+#type-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+    </style>
+    <title>Property Predictor</title>
+    <style>
+      #target {
+        width: 345px;
+      }
+    </style>
+
+  </head>
+
+
+  <body>
+
+
+<!-- Navigation bar for all the code required -->
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">Property Predictor</a></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="has-dropdown">
+        <a href="signup">Sign Up</a>
+        <ul class="dropdown">
+        <li><a href="#">New User</a></li>        
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Logout</a></li>
+          
+        </ul>
+      </li>
+    </ul>
+
+  </section>
+</nav>
+
+<!-- End of the navigation bar -->
+
+<!-- <div style="width: 100%;"> -->
+  
+    <input style="width : 70%; margin: 10px" id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <div style="float:left; width: 50%" id="map"></div>
+  
+
+  <div style="float:left; margin: 10px">
+
+  <form>
+
+  <!-- For price -->
+    <fieldset style="width: 150%; height: 20%;">
+    <legend>Price</legend>
+
+  <div class="row">
+    <div class="small-8">
+      <div class="row">
+      <!--   <div class="small-3 columns">
+          <label for="right-label" class="right">Price</label>
+        </div> -->
+        <div style="width: 150%;">
+          <input type="text" id="price_value" placeholder="Enter desired price">
+        </div>
+
+        <!-- <div class="row"> -->
+          <div style="width: 500%;" class="large-6 columns">
+            <label>Priority for results with this price (1 is least)</label>
+          <input type="radio" name="pricepri" value="1" id="p1"><label for="p1">1</label>
+          <input type="radio" name="pricepri" value="2" id="p2"><label for="p2">2</label>
+          <input type="radio" name="pricepri" value="3" id="p3"><label for="p3">3</label>
+          <input type="radio" name="pricepri" value="4" id="p4"><label for="p4">4</label>
+          <input type="radio" name="pricepri" value="5" id="p5"><label for="p5">5</label>
+    </div>
+    <!-- </div> -->
+    </div>
+  </div>
+   </fieldset>
+
+   <!-- End of price fieldset -->
+
+
+  <!-- For bedrooms -->
+    <fieldset style="width: 150%; height: 20%;">
+    <legend>Number of Bedrooms</legend>
+
+  <div class="row">
+    <div class="small-8">
+      <div class="row">
+      <!--   <div class="small-3 columns">
+          <label for="right-label" class="right">Price</label>
+        </div> -->
+        <div style="width: 150%;">
+          <input type="text" id="bedrooms" placeholder="Enter desired number of bedrooms">
+        </div>
+
+        <!-- <div class="row"> -->
+          <div style="width: 500%;" class="large-6 columns">
+            <label>Priority for results with number of bedrooms</label>
+          <input type="radio" name="bedroon_pri" value="1" id="b1"><label for="b1">1</label>
+          <input type="radio" name="bedroon_pri" value="2" id="b2"><label for="b2">2</label>
+          <input type="radio" name="bedroon_pri" value="3" id="b3"><label for="b3">3</label>
+          <input type="radio" name="bedroon_pri" value="4" id="b4"><label for="b4">4</label>
+          <input type="radio" name="bedroon_pri" value="5" id="b5"><label for="b5">5</label>
+    </div>
+    <!-- </div> -->
+    </div>
+  </div>
+   </fieldset>
+
+   <!-- End of bedrooms fieldset -->
+
+
+    <fieldset style="width: 150%; height: 20%;">
+    <legend>Crime Rate</legend>
+          <div style="width: 500%;" class="large-6 columns">
+            <label>Priority for crime rate in the neighborhood</label>
+          <input type="radio" name="crimepriority" value="1" id="c1"><label for="c1">1</label>
+          <input type="radio" name="crimepriority" value="2" id="c2"><label for="c2">2</label>
+          <input type="radio" name="crimepriority" value="3" id="c3"><label for="c3">3</label>
+          <input type="radio" name="crimepriority" value="4" id="c4"><label for="c4">4</label>
+          <input type="radio" name="crimepriority" value="5" id="c5"><label for="c5">5</label>
+    </div>
+    <!-- </div> -->
+    </div>
+  </div>
+   </fieldset>
+
+   <!-- End of crime fieldset -->
+  
+ <div class="row">
+    <div class="large-6 large-centered columns">
+    <input style="float:right;" type="submit" class="button round" value="Submit" onclick=getDataFromForm();/>
+  </div>
+</div>
+
+</form>
+</div>
+</div>
+<!-- <div style="clear:both"></div> -->
+
+
+<script>
+// This example adds a search box to a map, using the Google Place Autocomplete
+// feature. People can enter geographical searches. The search box will return a
+// pick list containing a mix of places and predicted search terms.
+
+function getDataFromForm(){
+  var priceVal = document.getElementById('price_value').value;
+  var bedVal = document.getElementById('bedrooms').value;   
+
+   console.log(priceVal);
+   console.log(bedVal);
+
+  // create a dictionary with these values and send it to the get call from the backend
+
+
+}
+
+function initAutocomplete() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 33.7550, lng: -84.3900},
+    zoom: 13,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+
+  // Create the search box and link it to the UI element.
+  var input = document.getElementById('pac-input');
+  var searchBox = new google.maps.places.SearchBox(input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  // Bias the SearchBox results towards current map's viewport.
+  map.addListener('bounds_changed', function() {
+    searchBox.setBounds(map.getBounds());
+  });
+
+  var markers = [];
+  // [START region_getplaces]
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    // For each place, get the icon, name and location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      var icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+      };
+
+      // Create a marker for each place.
+      markers.push(new google.maps.Marker({
+        map: map,
+        icon: icon,
+        title: place.name,
+        position: place.geometry.location
+      }));
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
+  // [END region_getplaces]
+}
+
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv6uUX8ehQPd2WNAPcZxFQ_wk9tFF1zg4&libraries=places&callback=initAutocomplete"
+         async defer></script>
+  </body>
+</html>
