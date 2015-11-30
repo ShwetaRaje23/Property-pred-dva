@@ -15,13 +15,13 @@
     <var id="results">results</var>
     <script type="text/javascript">
         {% autoescape off %}
-        data = JSON.parse('{{ results_json }}');
+        // data = JSON.parse('{{ results_json }}');
         {% endautoescape %}
     </script>
     <div id="tooltip" class="hidden">
         <p><span id="value"></span></p>
 	</div>
-    <script type="text/javascript" src="bubble.js"></script>
+    <script type="text/javascript" src="{%  static "bubble.js" %}"></script>
 </body>
    
 </html>

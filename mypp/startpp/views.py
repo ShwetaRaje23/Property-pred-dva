@@ -14,6 +14,9 @@ import json
 def hello_view(request):
     return render_to_response('helloworld.html', Context({'username':request.GET.get('name')}   ))
 
+def showbubble(request):
+    return render_to_response('Bubble.html')
+
 def action_controller(request):
     return HttpResponse(content=request.GET.get('name'))
 
