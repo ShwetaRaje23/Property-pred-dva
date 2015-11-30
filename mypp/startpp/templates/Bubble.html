@@ -1,28 +1,27 @@
-{%  load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <link rel="stylesheet" type="text/css" href="{%  static 'bubble.css' %}" />
     <script type="text/javascript" src="{% static 'd3/d3.js' %}" charset="utf-8"></script>
     
     <title>Bubble Menu </title>
 </head>
-<body>
+
+<body>   
     <h1>Property Selector</h1>
     <h2>Bubble Chart</h2>
     <section id="chart"></section>
-    <!-- bubble(json_results) -->
-    <!-- <script type="text/javascript" src="results.json"> -->
     <var id="results">results</var>
     <script type="text/javascript">
         {% autoescape off %}
         data = JSON.parse('{{ results_json }}');
         {% endautoescape %}
-        console.log(data);
-        //<!-- var results = {{ json_results }} -->
-        debugger
     </script>
-    <script type="text/javascript" src="{% static 'bubble.js' %}"></script>
+    <div id="tooltip" class="hidden">
+        <p><span id="value"></span></p>
+	</div>
+    <script type="text/javascript" src="bubble.js"></script>
 </body>
+   
 </html>
