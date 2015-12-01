@@ -7,6 +7,7 @@ from startpp.models import Property
 import simplejson
 from django.core.serializers.json import DjangoJSONEncoder
 import json
+from reinforcement import update_search_parameters
 
 # Create your views here.
 
@@ -93,3 +94,15 @@ def send_data_from_view(request):
 
     response = simplejson.dumps(result_dict)
     return render_to_response('maps2.html', Context({'results_json': response}))
+
+def collect_feedback(request):
+    return render_to_response('Feedback.html')
+
+def feedback_data(request):
+    my_dict = {}
+    my_dict['price'] = request.GET.get("price")
+    my_dict['size'] = request.GET.get("size")
+    my_dict['beds'] = request.GET.get("beds")
+    my_dict['safety'] = request.GET.get("safety")
+    #add reinforcement call
+    return render_to_response('thanks.html')

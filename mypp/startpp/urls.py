@@ -9,5 +9,7 @@ urlpatterns = [
     url(r'^$', views.inputdata_view),
     url(r'^getdata/$', views.getdata_view),
     url(r'^putmap/$', views.send_data_from_view),
-    url(r'^bubble/$', views.showbubble)
+    url(r'^bubble/$', views.showbubble),
+    url(r'^feedback/$', views.collect_feedback),
+    url(r'^getfeedbackdata/$', views.feedback_data)
 ]
