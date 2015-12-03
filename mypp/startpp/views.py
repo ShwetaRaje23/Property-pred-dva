@@ -148,7 +148,7 @@ def getdata_view(request):
     
     #query_set_loc = CityPropertyData.objects.filter(location = '1194 WOODLAND AVE SE', )
     obj_json = json.dumps(obj)
-    return HttpResponse(obj_json)
+    render_to_response('maps2.html', Context({'results_json': obj_json}))
 
     #--------------------------correct-----------------------------------------
     # results = {}
@@ -190,15 +190,15 @@ def feedback_data(request):
     my_list.append(request.GET.get("size"))
     my_list.append(request.GET.get("beds"))
     my_list.append(request.GET.get("safety"))
-<<<<<<< HEAD
+
 
 
     # this will be used to search the parameters
     attributes, update_search_weights_normalized = update_search_parameters(my_list)
 
-=======
+
   # this will be used to search the parameters
     attributes, update_search_weights_normalized = update_search_parameters(my_list)
->>>>>>> f882c7be1a372f876dd2e2dcbe49ce3f3cdec3ff
+
     update_with_reinforcement(my_list)
     return render_to_response('thanks.html')
