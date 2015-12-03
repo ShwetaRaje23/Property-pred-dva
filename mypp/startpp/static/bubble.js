@@ -13,21 +13,21 @@ var x = 0;
 var y = 0;
 //var json = data['data'];
 // Sample JSON data returned from the database
-var json = {'12345': { 'address': '123 Peachtree St, Atlanta, GA', 'price': 75000, 'area': 15000, 'bedrooms': 3, 'pScore': 5, 'aScore': 2, 'bScore': 3, 'sScore': 2, 'totScore': 51},
+var json = {'25341': { 'address': '546 Northside Dr, Atlanta, GA', 'price': 78000, 'area': 15000, 'bedrooms': 3, 'pScore': 5, 'aScore': 1, 'bScore': 5, 'sScore': 5, 'totScore': 68},
             '15234': { 'address': '213 Peachtree St, Atlanta, GA', 'price': 65000, 'area': 16000, 'bedrooms': 2, 'pScore': 5, 'aScore': 3, 'bScore': 4, 'sScore': 3, 'totScore': 62},
-            '13524': { 'address': '312 Peachtree St, Atlanta, GA', 'price': 85000, 'area': 17000, 'bedrooms': 4, 'pScore': 4, 'aScore': 4, 'bScore': 1, 'sScore': 4, 'totScore': 52},
-            '21345': { 'address': '456 Northside Dr, Atlanta, GA', 'price': 98000, 'area': 17000, 'bedrooms': 4, 'pScore': 3, 'aScore': 5, 'bScore': 2, 'sScore': 1, 'totScore': 46},
-            '25341': { 'address': '546 Northside Dr, Atlanta, GA', 'price': 78000, 'area': 15000, 'bedrooms': 3, 'pScore': 5, 'aScore': 1, 'bScore': 5, 'sScore': 5, 'totScore': 68},
-            '23145': { 'address': '645 Northside Dr, Atlanta, GA', 'price': 88000, 'area': 15000, 'bedrooms': 2, 'pScore': 3, 'aScore': 5, 'bScore': 4, 'sScore': 2, 'totScore': 57},
-            '31245': { 'address': '789 Marietta St, Atlanta, GA', 'price': 77000, 'area': 15000, 'bedrooms': 1, 'pScore': 2, 'aScore': 4, 'bScore': 2, 'sScore': 3, 'totScore': 43},
-            '35241': { 'address': '879 Marietta St, Atlanta, GA', 'price': 87000, 'area': 16000, 'bedrooms': 4, 'pScore': 3, 'aScore': 2, 'bScore': 5, 'sScore': 2, 'totScore': 49},
-            '34215': { 'address': '987 Marietta St, Atlanta, GA', 'price': 97000, 'area': 16000, 'bedrooms': 2, 'pScore': 4, 'aScore': 3, 'bScore': 3, 'sScore': 4, 'totScore': 56},
             '41235': { 'address': '159 Atlantic Dr, Atlanta, GA', 'price': 76000, 'area': 18000, 'bedrooms': 3, 'pScore': 4, 'aScore': 5, 'bScore': 3, 'sScore': 2, 'totScore': 58},
-            '43125': { 'address': '519 Atlantic Dr, Atlanta, GA', 'price': 86000, 'area': 19000, 'bedrooms': 2, 'pScore': 3, 'aScore': 1, 'bScore': 1, 'sScore': 1, 'totScore': 26},
+            '23145': { 'address': '645 Northside Dr, Atlanta, GA', 'price': 88000, 'area': 15000, 'bedrooms': 2, 'pScore': 3, 'aScore': 5, 'bScore': 4, 'sScore': 2, 'totScore': 57},
+            '34215': { 'address': '987 Marietta St, Atlanta, GA', 'price': 97000, 'area': 16000, 'bedrooms': 2, 'pScore': 4, 'aScore': 3, 'bScore': 3, 'sScore': 4, 'totScore': 56},
+            '13524': { 'address': '312 Peachtree St, Atlanta, GA', 'price': 85000, 'area': 17000, 'bedrooms': 4, 'pScore': 4, 'aScore': 4, 'bScore': 1, 'sScore': 4, 'totScore': 52},
+            '12345': { 'address': '123 Peachtree St, Atlanta, GA', 'price': 75000, 'area': 15000, 'bedrooms': 3, 'pScore': 5, 'aScore': 2, 'bScore': 3, 'sScore': 2, 'totScore': 51},
+            '35241': { 'address': '879 Marietta St, Atlanta, GA', 'price': 87000, 'area': 16000, 'bedrooms': 4, 'pScore': 3, 'aScore': 2, 'bScore': 5, 'sScore': 2, 'totScore': 49},
+            '21345': { 'address': '456 Northside Dr, Atlanta, GA', 'price': 98000, 'area': 17000, 'bedrooms': 4, 'pScore': 3, 'aScore': 5, 'bScore': 2, 'sScore': 1, 'totScore': 46},
+            '31245': { 'address': '789 Marietta St, Atlanta, GA', 'price': 77000, 'area': 15000, 'bedrooms': 1, 'pScore': 2, 'aScore': 4, 'bScore': 2, 'sScore': 3, 'totScore': 43},
             '45123': { 'address': '951 Atlantic Dr, Atlanta, GA', 'price': 96000, 'area': 16000, 'bedrooms': 2, 'pScore': 3, 'aScore': 2, 'bScore': 2, 'sScore': 1, 'totScore': 34},
-            '51234': { 'address': '269 Cherry St, Atlanta, GA', 'price': 74000, 'area': 15000, 'bedrooms': 4, 'pScore': 2, 'aScore': 1, 'bScore': 1, 'sScore': 2, 'totScore': 24},
-            '53124': { 'address': '692 Cherry St, Atlanta, GA', 'price': 84000, 'area': 15000, 'bedrooms': 2, 'pScore': 2, 'aScore': 1, 'bScore': 2, 'sScore': 1, 'totScore': 25},
-            '52134': { 'address': '962 Cherry St, Atlanta, GA', 'price': 94000, 'area': 17000, 'bedrooms': 3, 'pScore': 2, 'aScore': 2, 'bScore': 1, 'sScore': 2, 'totScore': 28}};
+            '52134': { 'address': '962 Cherry St, Atlanta, GA', 'price': 94000, 'area': 17000, 'bedrooms': 3, 'pScore': 2, 'aScore': 2, 'bScore': 1, 'sScore': 2, 'totScore': 28},
+            '53124': { 'address': '692 Cherry St, Atlanta, GA', 'price': 84000, 'area': 15000, 'bedrooms': 2, 'pScore': 2, 'aScore': 1, 'bScore': 2, 'sScore': 1, 'totScore': 25},                        
+            '43125': { 'address': '519 Atlantic Dr, Atlanta, GA', 'price': 86000, 'area': 19000, 'bedrooms': 2, 'pScore': 3, 'aScore': 1, 'bScore': 1, 'sScore': 1, 'totScore': 26},
+            '51234': { 'address': '269 Cherry St, Atlanta, GA', 'price': 74000, 'area': 15000, 'bedrooms': 4, 'pScore': 2, 'aScore': 1, 'bScore': 1, 'sScore': 2, 'totScore': 24}};
 
 
 /*
