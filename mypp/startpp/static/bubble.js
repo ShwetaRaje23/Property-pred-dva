@@ -85,7 +85,8 @@ legend.append('rect')
 legend.append('text')                                     
       .attr('x', legendRectSize + legendSpacing)              
       .attr('y', legendRectSize - legendSpacing)             
-      .text(function(d, i) { return labels[i]; }); 
+      .text(function(d, i) { return labels[i]; })
+      .style('fill', 'white'); ; 
 
 /*
 var bubble = d3.layout.pack()
