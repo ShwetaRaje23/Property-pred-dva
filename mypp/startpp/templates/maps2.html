@@ -200,9 +200,15 @@
   
  <div class="row">
     <div class="large-6 large-centered columns">
+    <a href="bubble">Click to Visualize</a>
     <input style="float:right;" type="submit" class="button round" value="Submit" onclick=getDataFromForm();/>
   </div>
+
 </div>
+
+
+
+
 
 </form>
 </div>
@@ -229,20 +235,20 @@ function getDataToPlot(data){
 
 
 
-{% autoescape off %}
-    data = JSON.parse('{{ results_json }}');
-{% endautoescape %}
+// {% autoescape off %}
+//     data = JSON.parse('{{ results_json }}');
+// {% endautoescape %}
 
 
 // if its latitude and longitude 
-i = 0
-location_list = []
-for (var type in data){
-  i = i + 1
-  location_list[i] = data[type];
-}
+// i = 0
+// location_list = []
+// for (var type in data){
+//   i = i + 1
+//   location_list[i] = data[type];
+// }
        
-console.log(location_list);
+// console.log(location_list);
 
 
 
@@ -273,7 +279,7 @@ function initAutocomplete () {
   var locations = [
             ['Georgia Tech', 33.343085, -84.305938],
                 ['Peachtree street', 33.343085, -84.31244],
-                ['Peachtree street', 33.353085, -84.10844],
+                ['XYZ street', 33.353085, -84.10844],
                 ['Peachtree street', 33.323185, -84.50844]];
 
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -294,17 +300,38 @@ function initAutocomplete () {
     searchBox.setBounds(map.getBounds());
   });
 
+
+  var infoWindow = new google.maps.InfoWindow();
   var markers = [];
 
 
 for (var i = 0; i < locations.length ; ++i) {
   var p = new google.maps.LatLng(locations[i][1], locations[i][2]);  
+  var n = locations[i][0];  
   marker = new google.maps.Marker({
   position: p,
   map: map,
-  title: 'Hello World!'
+  // title: 'Hello World!'
+  title: n
 });
+
+      google.maps.event.addListener(marker, "click", (function(marker, i) {
+      return function() {
+        infoWindow.setContent(
+        "Information: " + locations[i][0]
+        );
+        infoWindow.open(map, marker);
+      }    
+    })(marker, i));
+  
 }
+
+// markers.setMap(map);
+
+
+  google.maps.event.addListener(map, 'click', function(event) {
+    addMarker(event.latLng, map);
+  });
   // [START region_getplaces]
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
