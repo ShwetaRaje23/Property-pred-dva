@@ -200,10 +200,15 @@
   
  <div class="row">
     <div class="large-6 large-centered columns">
+<<<<<<< HEAD
     <!--a href="bubble">Click to Visualize</a-->
-    <input style="float:right;" type="submit" class="button round" value="Submit" onclick=getDataFromForm();/>
-  </div>
+=======
 
+>>>>>>> 3b9b07cab4c2920cf4b82a162322a90adce513dc
+    <input style="float:right;" type="submit" class="button round" value="Submit" onclick=getDataFromForm();/>
+      
+  </div>
+<a href="bubble">Click to Visualize</a>
 </div>
 
 
@@ -269,6 +274,20 @@ function getDataToPlot(data){
 //   title: 'Hello World!'
 // });
 // }
+
+data = {"crime": "[{\"fields\": {\"location_lng\": \"33.720240000\", \"crime_type\": \"LARCENY-NON VEHICLE\", \"neighborhood\": \"South Atlanta\", \"location\": \"55 MCDONOUGH BLVD SW\", \"location_lat\": \"-84.386540000\"}, \"model\": \"startpp.citycrimedata\", \"pk\": 90360664}, {\"fields\": {\"location_lng\": \"33.720240000\", \"crime_type\": \"LARCENY-NON VEHICLE\", \"neighborhood\": \"South Atlanta\", \"location\": \"55 MCDONOUGH BLVD SW\", \"location_lat\": \"-84.386540000\"}, \"model\": \"startpp.citycrimedata\", \"pk\": 90150916}, {\"fields\": {\"location_lng\": \"33.720240000\", \"crime_type\": \"LARCENY-NON VEHICLE\", \"neighborhood\": \"South Atlanta\", \"location\": \"55 MCDONOUGH BLVD SW\", \"location_lat\": \"-84.386540000\"}, \"model\": \"startpp.citycrimedata\", \"pk\": 90701022}, {\"fields\": {\"location_lng\": \"33.720240000\", \"crime_type\": \"LARCENY-NON VEHICLE\", \"neighborhood\": \"South Atlanta\", \"location\": \"55 MCDONOUGH BLVD SW\", \"location_lat\": \"-84.386540000\"}, \"model\": \"startpp.citycrimedata\", \"pk\": 92510487}]", "prop_data": "[{\"fields\": {\"num_bedrooms\": 0, \"location_lng\": \"-84.387271000\", \"location_lat\": \"33.889725000\", \"location\": \"LONG ISLAND DR NW\", \"price_input\": \"542800.000000000\"}, \"model\": \"startpp.citypropertydata\", \"pk\": 1}]"};
+
+
+for (var j = 0; j < data.prop_data; ++j){
+  console.log(data.prop_data);
+
+}
+
+console.log(data.prop_data[0].fields)
+
+
+// data_2 = JSON.parse(data);
+// console.log(data_2);
 
 function initAutocomplete () {
 
