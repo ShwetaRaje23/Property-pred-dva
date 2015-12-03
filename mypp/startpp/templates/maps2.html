@@ -236,10 +236,11 @@ function getDataToPlot(data){
 
 
 
-// {% autoescape off %}
-//     data = JSON.parse('{{ results_json }}');
-// {% endautoescape %}
+{% autoescape off %}
+    data = JSON.parse('{{ results_json }}');
+{% endautoescape %}
 
+console.log(data)
 
 // if its latitude and longitude 
 // i = 0
@@ -271,15 +272,15 @@ function getDataToPlot(data){
 // });
 // }
 
-data = {"crime": "[{\"fields\": {\"location_lng\": \"33.720240000\", \"crime_type\": \"LARCENY-NON VEHICLE\", \"neighborhood\": \"South Atlanta\", \"location\": \"55 MCDONOUGH BLVD SW\", \"location_lat\": \"-84.386540000\"}, \"model\": \"startpp.citycrimedata\", \"pk\": 90360664}, {\"fields\": {\"location_lng\": \"33.720240000\", \"crime_type\": \"LARCENY-NON VEHICLE\", \"neighborhood\": \"South Atlanta\", \"location\": \"55 MCDONOUGH BLVD SW\", \"location_lat\": \"-84.386540000\"}, \"model\": \"startpp.citycrimedata\", \"pk\": 90150916}, {\"fields\": {\"location_lng\": \"33.720240000\", \"crime_type\": \"LARCENY-NON VEHICLE\", \"neighborhood\": \"South Atlanta\", \"location\": \"55 MCDONOUGH BLVD SW\", \"location_lat\": \"-84.386540000\"}, \"model\": \"startpp.citycrimedata\", \"pk\": 90701022}, {\"fields\": {\"location_lng\": \"33.720240000\", \"crime_type\": \"LARCENY-NON VEHICLE\", \"neighborhood\": \"South Atlanta\", \"location\": \"55 MCDONOUGH BLVD SW\", \"location_lat\": \"-84.386540000\"}, \"model\": \"startpp.citycrimedata\", \"pk\": 92510487}]", "prop_data": "[{\"fields\": {\"num_bedrooms\": 0, \"location_lng\": \"-84.387271000\", \"location_lat\": \"33.889725000\", \"location\": \"LONG ISLAND DR NW\", \"price_input\": \"542800.000000000\"}, \"model\": \"startpp.citypropertydata\", \"pk\": 1}]"};
+// data = {"crime": "[{\"fields\": {\"location_lng\": \"33.720240000\", \"crime_type\": \"LARCENY-NON VEHICLE\", \"neighborhood\": \"South Atlanta\", \"location\": \"55 MCDONOUGH BLVD SW\", \"location_lat\": \"-84.386540000\"}, \"model\": \"startpp.citycrimedata\", \"pk\": 90360664}, {\"fields\": {\"location_lng\": \"33.720240000\", \"crime_type\": \"LARCENY-NON VEHICLE\", \"neighborhood\": \"South Atlanta\", \"location\": \"55 MCDONOUGH BLVD SW\", \"location_lat\": \"-84.386540000\"}, \"model\": \"startpp.citycrimedata\", \"pk\": 90150916}, {\"fields\": {\"location_lng\": \"33.720240000\", \"crime_type\": \"LARCENY-NON VEHICLE\", \"neighborhood\": \"South Atlanta\", \"location\": \"55 MCDONOUGH BLVD SW\", \"location_lat\": \"-84.386540000\"}, \"model\": \"startpp.citycrimedata\", \"pk\": 90701022}, {\"fields\": {\"location_lng\": \"33.720240000\", \"crime_type\": \"LARCENY-NON VEHICLE\", \"neighborhood\": \"South Atlanta\", \"location\": \"55 MCDONOUGH BLVD SW\", \"location_lat\": \"-84.386540000\"}, \"model\": \"startpp.citycrimedata\", \"pk\": 92510487}]", "prop_data": "[{\"fields\": {\"num_bedrooms\": 0, \"location_lng\": \"-84.387271000\", \"location_lat\": \"33.889725000\", \"location\": \"LONG ISLAND DR NW\", \"price_input\": \"542800.000000000\"}, \"model\": \"startpp.citypropertydata\", \"pk\": 1}]"};
 
 
-for (var j = 0; j < data.prop_data; ++j){
-  console.log(data.prop_data);
+// for (var j = 0; j < data.prop_data; ++j){
+//   console.log(data.prop_data);
 
-}
+// }
 
-console.log(data.prop_data[0].fields)
+// console.log(data.prop_data[0].fields)
 
 
 // data_2 = JSON.parse(data);
