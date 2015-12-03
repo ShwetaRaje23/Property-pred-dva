@@ -105,5 +105,8 @@ def feedback_data(request):
     my_list.append(request.GET.get("size"))
     my_list.append(request.GET.get("beds"))
     my_list.append(request.GET.get("safety"))
-    update_search_parameters(my_list)
+
+    # this will be used to search the parameters
+    attributes, update_search_weights_normalized = update_search_parameters(my_list)
+    update_with_reinforcement(my_list)
     return render_to_response('thanks.html')
