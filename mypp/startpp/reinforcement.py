@@ -1,15 +1,54 @@
 import csv
 import numpy as np
+from django.shortcuts import render
+from django.shortcuts import render_to_response
+from django.template.context import Context
+from django.http import HttpResponse
+from django.db import models
+from startpp.models import Property
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mypp.settings")
+from startpp.models import CityAmenities
+from startpp.models import CitySchools
+from startpp.models import CityEntertainment
+from startpp.models import CityFood
+from startpp.models import CityFoodPlaces
+from startpp.models import CityHealth
+from startpp.models import CityPlacesOfWorship
+from startpp.models import CityPublicSpaces
+from startpp.models import CityServicesData
+from startpp.models import CityShopsData
+from startpp.models import CityTransportationData
+from startpp.models import CityMiscServicesData
+from startpp.models import CityCrimeData
+from startpp.models import CityPropertyData_temp
+from startpp.models import CityPropertyData
+from startpp.models import InitialWeights
+from django.core import serializers
+import simplejson
+from django.core.serializers.json import DjangoJSONEncoder
+import json
+from django.shortcuts import render
+from django.shortcuts import render_to_response
+from django.template.context import Context
+from django.http import HttpResponse
+from django.db import models
+from startpp.models import Property
+#import simplejson
+from django.core.serializers.json import DjangoJSONEncoder
+import json
 
 def get_actual_weights():
     list_weights = []
-    f = open('initial_w.csv', 'rt')
-    reader = csv.reader(f)
-    for row in reader:
+    #f = open('initial_w.csv', 'rt')
+    init_weights = InitialWeights.objects.all()
+    #query_set_crime = InitialWeights.objects.filter(location = location_val)
+    #reader = csv.reader(f)
+    for row in init_weights:
         # print row
-        list_weights = row
-
-    list_weights = map(float, list_weights)
+        list_weights = [row.price, row.area, row.bedrooms, row.crime]
+    list_weights = [float(x) for x in list_weights]
+    #list_weights = map(float, list_weights)
 
     # print list_weights
     return list_weights
@@ -42,9 +81,9 @@ def update_search_parameters(feature_ranks, explore=False, epsilon=[1/4.]*4):
 
     feature_ranks = np.array(feature_ranks)
     if explore:
-        new_weights = feature_ranks * calculate_pmf(initial_weights) + bias
+        new_weights = np.multiply(np.array(feature_ranks, np.float), np.array(calculate_pmf(initial_weights), np.float)) + bias
     else:
-        new_weights = feature_ranks * calculate_pmf(initial_weights)
+        new_weights = np.multiply(np.array(feature_ranks, np.float), np.array(calculate_pmf(initial_weights), np.float))
     update_search_weights_normalized = calculate_pmf(new_weights)
 
     attributes = np.argsort(update_search_weights_normalized)
@@ -60,7 +99,7 @@ def update_with_reinforcement(feature_ranks):
     print "mass fx 1 ", pmf1
     feature_ranks = np.array(feature_ranks)
     idx = np.argmax(feature_ranks)
-    val = np.max(feature_ranks)
+    val = np.max(np.array(feature_ranks, np.float))
     initial_weights[idx] += val
     initial_weights[idx] /= 2.0
 
@@ -70,8 +109,14 @@ def update_with_reinforcement(feature_ranks):
     if np.sqrt(2) * np.linalg.norm(pmf_updated - pmf1) > 0.02:
         print "outlier detected, reverting back learning"
         initial_weights = backup
-
-    return initial_weights
+    price = initial_weights[0]
+    area = initial_weights[1]
+    bedrooms = initial_weights[2]
+    crime = initial_weights[3]
+    InitialWeights.objects.all().delete()
+    ca = InitialWeights(1, price, area, bedrooms, crime)
+    ca.save()
+    #return initial_weights
 
 
 # def modify_system_weights():
