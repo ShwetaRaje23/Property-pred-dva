@@ -6,7 +6,7 @@ var pBed = 4;
 var pSafety = 5;
 
 var lim = 10;   // The number of entries shown in the initial Bubble chart
-var color = ['#DF4949', '#E27A3F', '#EFC94C', '#9B59B6'];  
+var color = ['#009966', '#E27A3F', '#EFC94C', '#9B59B6'];  
 var labels = ['Price', 'Area', 'Bedrooms', 'Safety'];
 var oR = 5;
 var x = 0;
@@ -152,6 +152,8 @@ var circles = svg.selectAll('circle')
                  .on("click", function(d, i) 
                     {
                         d3.select(this).transition()
+                          .attr('stroke','white')
+                          .attr('stroke-width', 4)
                           .attr('transform', 'translate(' + 0 + ',' + 100 + ')') //.attr("x",320)
                           .duration(1000) // this is 1s 
                         d.y = d.y + 100;
@@ -374,6 +376,8 @@ function showNewEntries(tag)
                  .on("click", function(d, i) 
                     {
                         d3.select(this).transition()
+                          .attr('stroke','white')
+                          .attr('stroke-width', 4)
                           .attr('transform', 'translate(' + 0 + ',' + 100 + ')') //.attr("x",320)
                           .duration(1000) // this is 1s
                           .delay(100);     // this is 0.1s 

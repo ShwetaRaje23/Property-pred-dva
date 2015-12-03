@@ -14,7 +14,7 @@ a {
 circle:hover {
 	/* fill: orange; */
 	stroke: white;
-	stroke-width: 5;
+	stroke-width: 4;
 }
 
 #tooltip {
@@ -80,7 +80,7 @@ rect {
 /* Price */
 .price
  {
- 	fill: #DF4949; background: #DF4949;
+ 	fill: #009966; background: #009966;
  }
 
 /* Area */
