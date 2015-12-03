@@ -4,10 +4,37 @@ from django.template.context import Context
 from django.http import HttpResponse
 from django.db import models
 from startpp.models import Property
-import simplejson
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mypp.settings")
+from startpp.models import CityAmenities
+from startpp.models import CitySchools
+from startpp.models import CityEntertainment
+from startpp.models import CityFood
+from startpp.models import CityFoodPlaces
+from startpp.models import CityHealth
+from startpp.models import CityPlacesOfWorship
+from startpp.models import CityPublicSpaces
+from startpp.models import CityServicesData
+from startpp.models import CityShopsData
+from startpp.models import CityTransportationData
+from startpp.models import CityMiscServicesData
+from startpp.models import CityCrimeData
+from startpp.models import CityPropertyData_temp
+from startpp.models import CityPropertyData
+from django.core import serializers
+#import simplejson
 from django.core.serializers.json import DjangoJSONEncoder
 import json
-from reinforcement import update_search_parameters
+from django.shortcuts import render
+from django.shortcuts import render_to_response
+from django.template.context import Context
+from django.http import HttpResponse
+from django.db import models
+from startpp.models import Property
+#import simplejson
+from django.core.serializers.json import DjangoJSONEncoder
+import json
+from reinforcement import update_search_parameters, update_with_reinforcement
 
 # Create your views here.
 
@@ -25,7 +52,7 @@ def inputdata_view(request):
     return render_to_response('maps2.html', Context({'username':request.GET.get('name')}   ))
 
 def getdata_view(request):
-    my_dict = {}
+    #my_dict = {}
     # my_dict['Size of house Value'] = request.GET.get('size_of_house_value')
     # my_dict['Proximity To Public Transport Value'] = request.GET.get('proximity_to_public_transport_value')
     # my_dict['Price of the house Value'] = request.GET.get('price_of_the_house_value')
@@ -57,13 +84,69 @@ def getdata_view(request):
     # for key in my_dict:
     #     my_dict[key] = float(my_dict[key])
 
-    my_dict["price"] = request.GET.get("getprice")
-    my_dict["bedrooms"] = request.GET.get("getbedroom")
-    my_dict["price_priority"] = request.GET.get("pricepri")
-    my_dict["bedroom_priority"] = request.GET.get("bedroom_pri")
-    my_dict["crime_priority"] = request.GET.get("crimepriority")
+    price_val = request.GET.get("getprice")
+    bedrooms = request.GET.get("getbedroom")
+    price_priority = request.GET.get("pricepri") #id = 1
+    bedroom_priority = request.GET.get("bedroom_pri") #id = 2
+    size_priority = str(2) #
+    crime_priority = request.GET.get("crimepriority") #id = 3
+    location_val = "55 MCDONOUGH BLVD SW"#request.GET.get("location")
+    #priorities = [price_priority,bedroom_priority,crime_priority]
+    #filter on pricepri and then on bedroom_pri or the other way round - only 2 possibilities
+    query_set_crime = CityCrimeData.objects.filter(location = '55 MCDONOUGH BLVD SW')
+    query_set_loc = CityPropertyData.objects.filter(location = 'LONG ISLAND DR NW')#
+    final = query_set_loc
+    feature_ranks = [price_priority, unicode(size_priority, "utf-8"), bedroom_priority, crime_priority]
+    attributes, update_search_weights = update_search_parameters(feature_ranks)
 
-    return HttpResponse(json.dumps(my_dict))
+    for i in range(0, 4):
+        if(attributes[i] == 0):
+            idx_price = i
+        if(attributes[i] == 2):
+            idx_bedroom = i
+    
+    if(idx_price < idx_bedroom):
+        query_set_price = query_set_loc.filter(price_input__gt = float(price_val) * 0.8, price_input__lt = price_val)
+        query_set_bed = query_set_price.filter(num_bedrooms=bedrooms)
+        if(len(query_set_bed) == 0):
+            final = query_set_price
+        if(len(query_set_price) == 0):
+            final = query_set_loc
+    else:
+        query_set_bed = query_set_loc.filter(num_bedrooms=bedrooms)
+        query_set_price = query_set_bed.filter(price_input__gt = float(price_val) * 0.8, price_input__lt = price_val)
+        if(len(query_set_price) == 0):
+            final = query_set_bed
+        if(len(query_set_bed) == 0):
+            final = query_set_loc  
+    #print '###################'
+    #print serializers.serialize("json", final)
+    #print '###################'
+    #generate one final json based on the number of results
+    final_crime = serializers.serialize("json", query_set_crime)
+    final_dict = {}
+    final_dict['prop_data'] = final
+    final_dict['crime'] = final_crime
+    obj = {
+   'prop_data': serializers.serialize('json', final),
+   'crime': serializers.serialize('json', query_set_crime)
+    }
+    #get random data from db
+    query_set_crime = CityCrimeData.objects.filter(location = '55 MCDONOUGH BLVD SW')
+    query_set_loc = CityPropertyData.objects.filter(location = 'LONG ISLAND DR NW')#
+    final = CityPropertyData.objects.filter(pk__in=[1,4,7])
+    final_crime = CityCrimeData.objects.filter(pk__in=[1,4,7])
+    final_dict = {}
+    final_dict['prop_data'] = final
+    final_dict['crime'] = final_crime
+    obj = {
+   'prop_data': serializers.serialize('json', final),
+   'crime': serializers.serialize('json', query_set_crime)
+    }
+    
+    #query_set_loc = CityPropertyData.objects.filter(location = '1194 WOODLAND AVE SE', )
+    obj_json = json.dumps(obj)
+    return HttpResponse(obj_json)
 
     #--------------------------correct-----------------------------------------
     # results = {}
@@ -105,8 +188,11 @@ def feedback_data(request):
     my_list.append(request.GET.get("size"))
     my_list.append(request.GET.get("beds"))
     my_list.append(request.GET.get("safety"))
+<<<<<<< HEAD
+=======
 
     # this will be used to search the parameters
     attributes, update_search_weights_normalized = update_search_parameters(my_list)
+>>>>>>> 33f79f9ddac854f9f9d7de7c67d1708f1517e2f4
     update_with_reinforcement(my_list)
     return render_to_response('thanks.html')
