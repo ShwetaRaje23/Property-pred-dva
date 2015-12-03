@@ -4,6 +4,7 @@ from django.template.context import Context
 from django.http import HttpResponse
 from django.db import models
 from startpp.models import Property
+import numpy as np
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mypp.settings")
 from startpp.models import CityAmenities
@@ -35,7 +36,7 @@ from startpp.models import Property
 from django.core.serializers.json import DjangoJSONEncoder
 import json
 from reinforcement import update_search_parameters, update_with_reinforcement
-
+from django.db.models import Q
 # Create your views here.
 
 
@@ -134,11 +135,12 @@ def getdata_view(request):
     #get random data from db
     query_set_crime = CityCrimeData.objects.filter(location = '55 MCDONOUGH BLVD SW')
     query_set_loc = CityPropertyData.objects.filter(location = 'LONG ISLAND DR NW')#
-    final = CityPropertyData.objects.filter(pk__in=[1,4,7])
-    final_crime = CityCrimeData.objects.filter(pk__in=[1,4,7])
+    final = CityPropertyData.objects.filter(pk__in= np.random.choice(500, 15).tolist())
+    final_crime = CityCrimeData.objects.filter(Q(location__contains = "MARIETTA") | Q(location__contains = "PEACHTREE") | Q(location__contains = "LENOX") | Q(location__contains = "HOWELL") | Q(location__contains = "BAKER") | Q(location__contains = "PIEDMONT"))
+    #, location__contains = "LENOX", location__contains = "HOWELL", location__contains ="BAKER", location__contains="PIEDMONT")
     final_dict = {}
     final_dict['prop_data'] = final
-    final_dict['crime'] = final_crime
+    final_dict['crime'] = final_crime[10]
     obj = {
    'prop_data': serializers.serialize('json', final),
    'crime': serializers.serialize('json', query_set_crime)
@@ -188,11 +190,7 @@ def feedback_data(request):
     my_list.append(request.GET.get("size"))
     my_list.append(request.GET.get("beds"))
     my_list.append(request.GET.get("safety"))
-<<<<<<< HEAD
-=======
-
-    # this will be used to search the parameters
+  # this will be used to search the parameters
     attributes, update_search_weights_normalized = update_search_parameters(my_list)
->>>>>>> 33f79f9ddac854f9f9d7de7c67d1708f1517e2f4
     update_with_reinforcement(my_list)
     return render_to_response('thanks.html')
