@@ -44,7 +44,10 @@ def hello_view(request):
     return render_to_response('helloworld.html', Context({'username':request.GET.get('name')}   ))
 
 def showbubble(request):
-    return render_to_response('Bubble.html')
+    results = {}
+    results['weight'] = update_search_weights
+    results['data'] = obj
+    return render_to_response('Bubble.html',Context({'results': results}))
 
 def action_controller(request):
     return HttpResponse(content=request.GET.get('name'))
@@ -191,10 +194,6 @@ def feedback_data(request):
     my_list.append(request.GET.get("beds"))
     my_list.append(request.GET.get("safety"))
 
-
-
-    # this will be used to search the parameters
-    attributes, update_search_weights_normalized = update_search_parameters(my_list)
 
 
   # this will be used to search the parameters
