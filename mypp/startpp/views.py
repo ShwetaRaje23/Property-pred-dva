@@ -107,6 +107,7 @@ def getdata_view(request):
    #      if(attributes[i] == 2):
    #          idx_bedroom = i
     
+<<<<<<< HEAD
    #  if(idx_price < idx_bedroom):
    #      query_set_price = query_set_loc.filter(price_input__gt = float(price_val) * 0.8, price_input__lt = price_val)
    #      query_set_bed = query_set_price.filter(num_bedrooms=bedrooms)
@@ -146,6 +147,47 @@ def getdata_view(request):
    # 'prop_data': serializers.serialize('json', final),
    # 'crime': serializers.serialize('json', query_set_crime)
    #  }
+=======
+    if(idx_price < idx_bedroom):
+        query_set_price = query_set_loc.filter(price_input__gt = float(price_val) * 0.8, price_input__lt = price_val)
+        query_set_bed = query_set_price.filter(num_bedrooms=bedrooms)
+        if(len(query_set_bed) == 0):
+            final = query_set_price
+        if(len(query_set_price) == 0):
+            final = query_set_loc
+    else:
+        query_set_bed = query_set_loc.filter(num_bedrooms=bedrooms)
+        query_set_price = query_set_bed.filter(price_input__gt = float(price_val) * 0.8, price_input__lt = price_val)
+        if(len(query_set_price) == 0):
+            final = query_set_bed
+        if(len(query_set_bed) == 0):
+            final = query_set_loc  
+    #print '###################'
+    #print serializers.serialize("json", final)
+    #print '###################'
+    #generate one final json based on the number of results
+    final_crime = serializers.serialize("json", query_set_crime)
+    final_dict = {}
+    final_dict['prop_data'] = final
+    final_dict['crime'] = final_crime
+    obj = {
+   'prop_data': serializers.serialize('json', final),
+   'crime': serializers.serialize('json', query_set_crime)
+    }
+    #get random data from db
+    query_set_crime = CityCrimeData.objects.filter(location = '55 MCDONOUGH BLVD SW')
+    query_set_loc = CityPropertyData.objects.filter(location = 'LONG ISLAND DR NW')#
+    final = CityPropertyData.objects.filter(pk__in= np.random.choice(500, 20).tolist())
+    final_crime = CityCrimeData.objects.filter(Q(location__contains = "BAKER RD NW")| Q(location__contains = "PEACHTREE") | Q(location__contains = "LENOX") | Q(location__contains = "HOWELL") | Q(location__contains = "BAKER") | Q(location__contains = "PIEDMONT"))[:20]
+    #, location__contains = "LENOX", location__contains = "HOWELL", location__contains ="BAKER", location__contains="PIEDMONT")
+    final_dict = {}
+    final_dict['prop_data'] = final
+    final_dict['crime'] = final_crime
+    obj = {
+   'prop_data': serializers.serialize('json', final),
+   'crime': serializers.serialize('json', final_crime)
+    }
+>>>>>>> cd73e7317faf1be0ce0f321558dbe857cb978757
     
    #  #query_set_loc = CityPropertyData.objects.filter(location = '1194 WOODLAND AVE SE', )
    #  obj_json = json.dumps(obj)
