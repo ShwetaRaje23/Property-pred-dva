@@ -135,15 +135,15 @@ def getdata_view(request):
     #get random data from db
     query_set_crime = CityCrimeData.objects.filter(location = '55 MCDONOUGH BLVD SW')
     query_set_loc = CityPropertyData.objects.filter(location = 'LONG ISLAND DR NW')#
-    final = CityPropertyData.objects.filter(pk__in= np.random.choice(500, 15).tolist())
-    final_crime = CityCrimeData.objects.filter(Q(location__contains = "MARIETTA") | Q(location__contains = "PEACHTREE") | Q(location__contains = "LENOX") | Q(location__contains = "HOWELL") | Q(location__contains = "BAKER") | Q(location__contains = "PIEDMONT"))
+    final = CityPropertyData.objects.filter(pk__in= np.random.choice(500, 20).tolist())
+    final_crime = CityCrimeData.objects.filter(Q(location__contains = "BAKER RD NW")| Q(location__contains = "PEACHTREE") | Q(location__contains = "LENOX") | Q(location__contains = "HOWELL") | Q(location__contains = "BAKER") | Q(location__contains = "PIEDMONT"))[:20]
     #, location__contains = "LENOX", location__contains = "HOWELL", location__contains ="BAKER", location__contains="PIEDMONT")
     final_dict = {}
     final_dict['prop_data'] = final
-    final_dict['crime'] = final_crime[10]
+    final_dict['crime'] = final_crime
     obj = {
    'prop_data': serializers.serialize('json', final),
-   'crime': serializers.serialize('json', query_set_crime)
+   'crime': serializers.serialize('json', final_crime)
     }
     
     #query_set_loc = CityPropertyData.objects.filter(location = '1194 WOODLAND AVE SE', )
