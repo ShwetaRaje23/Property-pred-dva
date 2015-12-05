@@ -246,6 +246,7 @@ function getDataToPlot(data){
 var list_name = data.lname
 var list_lat = data.latitude
 var list_long = data.longitude
+var lprice = data.lprice
 var length = list_lat.length
 
 
@@ -347,7 +348,8 @@ for (var i = 0; i < length ; ++i) {
       google.maps.event.addListener(marker, "click", (function(marker, i) {
       return function() {
         infoWindow.setContent(
-        "Name: " + list_name[i]
+        "Name: " + list_name[i] + "\n" + "Price : "  + lprice[i]  
+
         );
         infoWindow.open(map, marker);
       }    

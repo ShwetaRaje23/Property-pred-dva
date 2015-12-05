@@ -58,37 +58,6 @@ def inputdata_view(request):
     return render_to_response('maps2.html', Context({'username':request.GET.get('name')}   ))
 
 def getdata_view(request):
-    #my_dict = {}
-    # my_dict['Size of house Value'] = request.GET.get('size_of_house_value')
-    # my_dict['Proximity To Public Transport Value'] = request.GET.get('proximity_to_public_transport_value')
-    # my_dict['Price of the house Value'] = request.GET.get('price_of_the_house_value')
-    # my_dict['Number of bedrooms Value'] = request.GET.get('number_of_bedrooms_value')
-    # my_dict['School in the neighborhood Value'] = request.GET.get('school_in_the_neighborhood_value')
-    # my_dict['Hospital in the neighborhood Value'] = request.GET.get('hospital_in_the_neighborhood_value')
-    # my_dict['Pet friendly Value'] = request.GET.get('pet_friendly_value')
-    # my_dict['Yard available Value'] = request.GET.get('yard_available_value')
-    # my_dict['Bars around Value'] = request.GET.get('bars_around_value')
-    # my_dict['Crime rate in the locality Value'] = request.GET.get('crime_rate_in_the_locality_value')
-    # my_dict['Places of worship around Value'] = request.GET.get('places_of_worship_nearby_value')
-    # my_dict['Closeness to workplace Value'] = request.GET.get('closeness_to_workplace_value')
-    # my_dict['Closeness to super market Value'] = request.GET.get('closeness_to_super_market_value')
-    # my_dict['Age of the house Value'] = request.GET.get('age_of_the_house_value')
-    # my_dict['Size of house Priority'] = request.GET.get('size_of_house')
-    # my_dict['Proximity To Public Transport Priority'] = request.GET.get('proximity_to_public_transport')
-    # my_dict['Price of the house Priority'] = request.GET.get('proximity_to_public_transport')
-    # my_dict['Number of bedrooms Priority'] = request.GET.get('number_of_bedrooms')
-    # my_dict['School in the neighborhood Priority'] = request.GET.get('school_in_the_neighborhood')
-    # my_dict['Hospital in the neighborhood Priority'] = request.GET.get('hospital_in_the_neighborhood')
-    # my_dict['Pet friendly Priority'] = request.GET.get('pet_friendly')
-    # my_dict['Yard available Priority'] = request.GET.get('yard_available')
-    # my_dict['Bars around Priority'] = request.GET.get('bars_around')
-    # my_dict['Crime rate in the locality Priority'] = request.GET.get('crime_rate_in_the_locality')
-    # my_dict['Places of worship around Priority'] = request.GET.get('places_of_worship_nearby')
-    # my_dict['Closeness to workplace Priority'] = request.GET.get('closeness_to_workplace')
-    # my_dict['Closeness to super market Priority'] = request.GET.get('closeness_to_super_market')
-    # my_dict['Age of the house Priority'] = request.GET.get('age_of_the_house')
-    # for key in my_dict:
-    #     my_dict[key] = float(my_dict[key])
 
     
     price_val = request.GET.get("getprice")
@@ -105,24 +74,24 @@ def getdata_view(request):
    #  final = query_set_loc
     feature_ranks = [price_priority, unicode(size_priority, "utf-8"), bedroom_priority, crime_priority]
     # attributes, update_search_weights = update_search_parameters(feature_ranks)
-    # attributes = [1,2,3,4]
-    # for i in range(0, 4):
-    #   if(attributes[i] == 0):
-    #       idx_price = i
-    #   if(attributes[i] == 2):
-    #       idx_bedroom = i
+    attributes = [1,2,3,0]
+    for i in range(0, 4):
+      if(attributes[i] == 0):
+          idx_price = i
+      if(attributes[i] == 2):
+          idx_bedroom = i
     
 
-    # if(idx_price < idx_bedroom):
-    #     query_set_price = CityPropertyData.objects.filter(price_input__gt = float(price_val) * 0.8, price_input__lt = price_val)
-    #     query_set_bed = query_set_price.filter(num_bedrooms=bedrooms)
-    #     if(len(query_set_bed) == 0):
-    #         final = query_set_price
-    # else:
-    #     query_set_bed = CityPropertyData.objects.filter(num_bedrooms=bedrooms)
-    #     query_set_price = query_set_bed.filter(price_input__gt = float(price_val) * 0.8, price_input__lt = price_val)
-    #     if(len(query_set_price) == 0):
-    #         final = query_set_bed
+    if(idx_price < idx_bedroom):
+        query_set_price = CityPropertyData.objects.filter(price_input__gt = float(price_val) * 0.8, price_input__lt = price_val)
+        query_set_bed = query_set_price.filter(num_bedrooms=bedrooms)
+        if(len(query_set_bed) == 0):
+            final = query_set_price
+    else:
+        query_set_bed = CityPropertyData.objects.filter(num_bedrooms=bedrooms)
+        query_set_price = query_set_bed.filter(price_input__gt = float(price_val) * 0.8, price_input__lt = price_val)
+        if(len(query_set_price) == 0):
+            final = query_set_bed
     #print '###################'
     #print serializers.serialize("json", final)
     #print '###################'
@@ -148,15 +117,18 @@ def getdata_view(request):
     lati = []
     longi = []
     lname = []
+    lprice = []
     for each in final.values():
       lati.append(float(each['location_lat']))
       longi.append(float(each['location_lng']))
       lname.append(each['location'])
+      lprice.append(float(each["price_input"]))
 
     my_dict = {}
     my_dict['latitude'] = lati
     my_dict['longitude'] = longi
     my_dict['lname'] = lname
+    my_dict['lprice'] = lprice
 
 
    #  obj = {
@@ -170,7 +142,7 @@ def getdata_view(request):
     obj_json = json.dumps(my_dict)
     return render_to_response('maps2.html', Context({'results_json': obj_json}))
     # obj_json = json.dumps(my_dict)
-    # return HttpResponse(obj_json)
+    # return HttpResponse(final.values())
 
     #--------------------------correct-----------------------------------------
     # results = {}
