@@ -1,4 +1,5 @@
 {% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -117,8 +118,8 @@
 
   <div style="float:left; margin: 10px">
 
-  <!-- <form action="/startpp/" method="get"> -->
-  <form>
+  <form action="/startpp/getdata" method="get">
+  <!-- <form> -->
   <!-- For price -->
     <fieldset style="width: 150%; height: 20%;">
     <legend>Price</legend>
@@ -200,24 +201,12 @@
   
  <div class="row">
     <div class="large-6 large-centered columns">
-<<<<<<< HEAD
-    <!--a href="bubble">Click to Visualize</a-->
-=======
 
-    <!--a href="bubble">Click to Visualize</a-->
-
-
-
-<<<<<<< HEAD
-    <!-- <input id="buttonid" style="float:right;" type="submit" class="button round" value="Submit"/> -->
-    <input id="buttonid" style="float:right;" type="submit" class="button round" value="Submit" />
-=======
->>>>>>> 9580ee253eb065716d7ca2ae2f90a51e3e2cbd91
     <input style="float:right;" type="submit" class="button round" value="Submit" onclick=getDataFromForm();/>
->>>>>>> cd73e7317faf1be0ce0f321558dbe857cb978757
+
       
   </div>
-<a href="bubble">Click to Visualize</a>
+<a href="/startpp/bubble">Click to Visualize</a>
 </div>
 
 
@@ -249,11 +238,15 @@ function getDataToPlot(data){
 
 
 
-// {% autoescape off %}
-//     data = JSON.parse('{{ results_json }}');
-// {% endautoescape %}
+{% autoescape off %}
+    data = JSON.parse('{{ results_json }}');
 
-// console.log(data)
+{% endautoescape %}
+
+var list_name = data.lname
+var list_lat = data.latitude
+var list_long = data.longitude
+
 
 // if its latitude and longitude 
 // i = 0

@@ -3,7 +3,7 @@ import csv
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mypp.settings")
 from startpp.models import CityCrimeData
 import xml.etree.ElementTree as ET
-data_file_path = "V:\DVA\DVA Project\DVAProject\data\Atlanta_crimedata.csv"
+data_file_path = "/Users/Shweta/Documents/GatechSem3/DVA/Project/DVAProject/data/Atlanta_crimedata.csv"
 
 handle = open(data_file_path, 'r')
 contents = handle.read()
