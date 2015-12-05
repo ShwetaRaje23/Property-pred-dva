@@ -138,7 +138,7 @@ def getdata_view(request):
     #get random data from db
     
     # query_set_loc = CityPropertyData.objects.filter(location = 'LONG ISLAND DR NW')#
-    final = CityPropertyData.objects.filter(pk__in= np.random.choice(500, 20).tolist())
+    final = CityPropertyData.objects.filter(pk__in= np.random.choice(5000, 20).tolist())
     
     #, location__contains = "LENOX", location__contains = "HOWELL", location__contains ="BAKER", location__contains="PIEDMONT")
     final_dict = {}

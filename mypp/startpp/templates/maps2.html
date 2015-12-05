@@ -246,6 +246,7 @@ function getDataToPlot(data){
 var list_name = data.lname
 var list_lat = data.latitude
 var list_long = data.longitude
+var length = list_lat.length
 
 
 // if its latitude and longitude 
@@ -278,49 +279,11 @@ var list_long = data.longitude
 // });
 // }
 
-// data = {"crime": "[{\"fields\": {\"location_lng\": \"33.720240000\", \"crime_type\": \"LARCENY-NON VEHICLE\", \"neighborhood\": \"South Atlanta\", \"location\": \"55 MCDONOUGH BLVD SW\", \"location_lat\": \"-84.386540000\"}, \"model\": \"startpp.citycrimedata\", \"pk\": 90360664}, {\"fields\": {\"location_lng\": \"33.720240000\", \"crime_type\": \"LARCENY-NON VEHICLE\", \"neighborhood\": \"South Atlanta\", \"location\": \"55 MCDONOUGH BLVD SW\", \"location_lat\": \"-84.386540000\"}, \"model\": \"startpp.citycrimedata\", \"pk\": 90150916}, {\"fields\": {\"location_lng\": \"33.720240000\", \"crime_type\": \"LARCENY-NON VEHICLE\", \"neighborhood\": \"South Atlanta\", \"location\": \"55 MCDONOUGH BLVD SW\", \"location_lat\": \"-84.386540000\"}, \"model\": \"startpp.citycrimedata\", \"pk\": 90701022}, {\"fields\": {\"location_lng\": \"33.720240000\", \"crime_type\": \"LARCENY-NON VEHICLE\", \"neighborhood\": \"South Atlanta\", \"location\": \"55 MCDONOUGH BLVD SW\", \"location_lat\": \"-84.386540000\"}, \"model\": \"startpp.citycrimedata\", \"pk\": 92510487}]", "prop_data": "[{\"fields\": {\"num_bedrooms\": 0, \"location_lng\": \"-84.387271000\", \"location_lat\": \"33.889725000\", \"location\": \"LONG ISLAND DR NW\", \"price_input\": \"542800.000000000\"}, \"model\": \"startpp.citypropertydata\", \"pk\": 1}]"};
-
-
-// for (var j = 0; j < data.prop_data; ++j){
-//   console.log(data.prop_data);
-
-// }
-
-// console.log(data.prop_data[0].fields)
-
-
-// data_2 = JSON.parse(data);
-// console.log(data_2);
 
 var locations = [];
 // document.getElementById('button').onclick = function(getdata) {
 //    alert("button was clicked");
 // }​;​
-   
-
-function getdata(){
-  var locations = [  ['786 LOWNDES AVE SW', 33.733731, -84.411443],
-['565 NORTHSIDE DR NW', 33.770637, -84.404733],
-['823 BRIARCLIFF RD NE', 33.777124, -84.347312],
-['2495 FERNLEAF CT NW', 33.82069, -84.439777],
-['FERNLEAF PARK DR NW', 33.819361, -84.439239],
-['1751 MADRONA ST NW', 33.768105, -84.437096],
-['1623 MEMORIAL DR SE', 33.75928, -84.317174],
-['2259 COTTAGE GROVE AVE SE', 33.750509, -84.317591],
-['3414 HABERSHAM RD NW', 33.848163, -84.391107],
-['3680 TUXEDO RD NW', 33.85462, -84.397174]];
-}
-
-// var locations = [  ['786 LOWNDES AVE SW', 33.733731, -84.411443],
-// ['565 NORTHSIDE DR NW', 33.770637, -84.404733],
-// ['823 BRIARCLIFF RD NE', 33.777124, -84.347312],
-// ['2495 FERNLEAF CT NW', 33.82069, -84.439777],
-// ['FERNLEAF PARK DR NW', 33.819361, -84.439239],
-// ['1751 MADRONA ST NW', 33.768105, -84.437096],
-// ['1623 MEMORIAL DR SE', 33.75928, -84.317174],
-// ['2259 COTTAGE GROVE AVE SE', 33.750509, -84.317591],
-// ['3414 HABERSHAM RD NW', 33.848163, -84.391107],
-// ['3680 TUXEDO RD NW', 33.85462, -84.397174]];
 
 
 
@@ -337,16 +300,16 @@ function initAutocomplete () {
   //               ['Peachtree street', 33.323185, -84.50844]];
 
 
-var locations = [  ['786 LOWNDES AVE SW', 33.733731, -84.411443],
-['565 NORTHSIDE DR NW', 33.770637, -84.404733],
-['823 BRIARCLIFF RD NE', 33.777124, -84.347312],
-['2495 FERNLEAF CT NW', 33.82069, -84.439777],
-['FERNLEAF PARK DR NW', 33.819361, -84.439239],
-['1751 MADRONA ST NW', 33.768105, -84.437096],
-['1623 MEMORIAL DR SE', 33.75928, -84.317174],
-['2259 COTTAGE GROVE AVE SE', 33.750509, -84.317591],
-['3414 HABERSHAM RD NW', 33.848163, -84.391107],
-['3680 TUXEDO RD NW', 33.85462, -84.397174]];
+// var locations = [  ['786 LOWNDES AVE SW', 33.733731, -84.411443],
+// ['565 NORTHSIDE DR NW', 33.770637, -84.404733],
+// ['823 BRIARCLIFF RD NE', 33.777124, -84.347312],
+// ['2495 FERNLEAF CT NW', 33.82069, -84.439777],
+// ['FERNLEAF PARK DR NW', 33.819361, -84.439239],
+// ['1751 MADRONA ST NW', 33.768105, -84.437096],
+// ['1623 MEMORIAL DR SE', 33.75928, -84.317174],
+// ['2259 COTTAGE GROVE AVE SE', 33.750509, -84.317591],
+// ['3414 HABERSHAM RD NW', 33.848163, -84.391107],
+// ['3680 TUXEDO RD NW', 33.85462, -84.397174]];
 
   var map = new google.maps.Map(document.getElementById('map'), {
 
@@ -371,9 +334,9 @@ var locations = [  ['786 LOWNDES AVE SW', 33.733731, -84.411443],
   var markers = [];
 
 
-for (var i = 0; i < locations.length ; ++i) {
-  var p = new google.maps.LatLng(locations[i][1], locations[i][2]);  
-  var n = locations[i][0];  
+for (var i = 0; i < length ; ++i) {
+  var p = new google.maps.LatLng(list_lat[i], list_long[i]);  
+  var n =   list_name[i];
   marker = new google.maps.Marker({
   position: p,
   map: map,
@@ -384,7 +347,7 @@ for (var i = 0; i < locations.length ; ++i) {
       google.maps.event.addListener(marker, "click", (function(marker, i) {
       return function() {
         infoWindow.setContent(
-        "Information: " + locations[i][0]
+        "Name: " + list_name[i]
         );
         infoWindow.open(map, marker);
       }    
